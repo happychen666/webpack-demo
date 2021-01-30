@@ -1,1 +1,0 @@
-export const hello: string = "Hello ts and happy chen!"
