@@ -11,18 +11,8 @@ module.exports = {
     contentBase: './dist',
   },
   entry: {
-    shared: 'lodash',
-    index: {
-      import: './src/index.js',
-      dependOn: 'shared',
-    },
-    another: {
-      import: './src/another-module.js',
-      dependOn: 'shared',
-    },
-  },
-  optimization: {
-    runtimeChunk: 'single',
+    index: './src/index.js',
+    another: './src/another-module.js',
   },
   output: {
     // filename: 'main.js',
@@ -30,6 +20,11 @@ module.exports = {
     // path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
     path: __dirname + '/dist'
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
   },
   plugins: [
     // new CleanWebpackPlugin(), // 构建前清理 /dist 文件夹
