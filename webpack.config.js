@@ -1,29 +1,29 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
-  // tell the dev server where to look for files
-  devServer: {
-    contentBase: './dist',
-  },
   entry: {
     index: './src/index.js',
-    another: './src/another-module.js',
   },
   output: {
-    // filename: 'main.js',
-    // filename: '[name].[contenthash].bundle.js',
-    // path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
-    path: __dirname + '/dist'
+    filename: '[name].[contenthash].js',
+    path: path.resolve(__dirname, 'dist')
   },
   optimization: {
+    moduleIds: 'deterministic',
+    runtimeChunk: 'single',
     splitChunks: {
-      chunks: 'all',
+      // 将第三方库(library) （例如 lodash 或 react）提取到单独的 vendor chunk 文件中
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
     },
   },
   plugins: [
