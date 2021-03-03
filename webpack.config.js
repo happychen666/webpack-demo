@@ -7,10 +7,11 @@ module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   entry: {
+    polyfills: './src/polyfills',
     index: './src/index.js',
   },
   output: {
-    filename: '[name].[contenthash].js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
   optimization: {
@@ -46,7 +47,7 @@ module.exports = {
       {
         test: require.resolve('./src/globals.js'),
         use:
-          'exports-loader?type=ceommonjs&exports=file,multiple|helpers.parse|parse',
+          'exports-loader?type=commonjs&exports=file,multiple|helpers.parse|parse',
       }
     ],
   },
