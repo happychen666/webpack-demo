@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
@@ -29,7 +30,24 @@ module.exports = {
   plugins: [
     // new CleanWebpackPlugin(), // 构建前清理 /dist 文件夹
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
-    new HtmlWebpackPlugin({ template: './src/index.html' })
+    new HtmlWebpackPlugin({ template: './src/index.html' }),
     // new HtmlWebpackPlugin({ title: '管理输出' })
-  ]
+    new webpack.ProvidePlugin({
+      // _: 'lodash',
+      join: ['lodash', 'join'],
+    })
+  ],
+  module: {
+    rules: [
+      {
+        test: require.resolve('./src/index.js'),
+        use: 'imports-loader?wrapper=window',
+      },
+      {
+        test: require.resolve('./src/globals.js'),
+        use:
+          'exports-loader?type=ceommonjs&exports=file,multiple|helpers.parse|parse',
+      }
+    ],
+  },
 };

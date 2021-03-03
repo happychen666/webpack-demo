@@ -1,12 +1,14 @@
-import _ from 'lodash';
-// import Print from './print';
+const { file, parse } = require('./globals.js')
+console.log(file, parse)
 
 function component() {
   const element = document.createElement('div');
 
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  // element.onclick = Print.bind(null, 'Hello webpack!');
+  element.innerHTML = join(['Hello', 'webpack'], ' ');
+
+  // Assume we are in the context of `window`
+  console.log("Hmmm, this probably isn't a great idea...");
+  console.log(this);
 
   return element;
 }
