@@ -8,7 +8,7 @@ function component() {
 
   // Assume we are in the context of `window`
   console.log("Hmmm, this probably isn't a great idea...");
-  console.log(this);
+  // console.log(this);
 
   return element;
 }
