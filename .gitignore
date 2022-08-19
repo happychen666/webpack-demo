@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 node_modules/
 dist/
 package-lock.json
@@ -8,3 +9,7 @@ npm-debug.log*
 .vscode
 *.suo
 *.ntvs*
+=======
+node_modules
+dist
+>>>>>>> 17cd1ae1be56d1cbd738730ec0b36152effb666f
