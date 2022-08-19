@@ -8,20 +8,20 @@ module.exports = {
     context: path.join(__dirname, './src/'),
     entry: {
         index: './index.js',
-        vendor: ['vuex', 'lodash', 'vue']
     },
     // output: {
     //     filename: 'main.js',
     // },
-    mode: 'production',
-    optimization: {
-        splitChunks:
-        {
-            chunks:
-                'all',
-        },
-    },
+    mode: 'development',
     devServer: {
-        publicPath: '/dist'
-    }
+        publicPath: '/dist/'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            }
+        ]
+    },
 }
