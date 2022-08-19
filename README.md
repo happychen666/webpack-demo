@@ -1,4 +1,3 @@
-webpack-3
 1，资源的输入和输出
 
 相关的配置项context、entry、output。
